@@ -1,0 +1,177 @@
+/* ============================================
+   SearchFilters — TripleTen UI Kit
+   Inputs: borde redondeado, borde gris
+   Select: mismo estilo que input
+   Botón reset: ghost píldora azul
+============================================ */
+
+.search-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+/* --- Input búsqueda (con ícono) --- */
+.search-filters__search {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-filters__icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888888;
+    pointer-events: none;
+}
+
+.search-filters__input {
+    width: 100%;
+    height: 44px;
+    padding: 0 40px 0 40px;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    color: #000000;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-filters__input:focus {
+    border-color: #2f71e5;
+}
+
+.search-filters__input::placeholder {
+    color: #aaaaaa;
+}
+
+/* Botón X dentro del input */
+.search-filters__clear-input {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888888;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    border-radius: 50%;
+    transition: color 0.2s;
+}
+
+.search-filters__clear-input:hover {
+    color: #000000;
+}
+
+/* --- Select de categoría --- */
+.search-filters__select {
+    height: 44px;
+    padding: 0 36px 0 14px;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    color: #000000;
+    background: #ffffff
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")
+        no-repeat right 12px center;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    min-width: 180px;
+    transition: border-color 0.2s;
+}
+
+.search-filters__select:focus {
+    border-color: #2f71e5;
+}
+
+/* --- Rango de precio --- */
+.search-filters__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-filters__input_price {
+    width: 110px;
+    padding: 0 12px;
+    flex-shrink: 0;
+}
+
+/* Quitar flechas del input number */
+.search-filters__input_price::-webkit-outer-spin-button,
+.search-filters__input_price::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.search-filters__price-sep {
+    font-size: 14px;
+    color: #888888;
+    flex-shrink: 0;
+}
+
+/* --- Botón limpiar filtros (píldora ghost) --- */
+.search-filters__reset {
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 100px;
+    background: transparent;
+    color: #2f71e5;
+    border: 1px solid #2f71e5;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.search-filters__reset:hover {
+    background: rgba(47, 113, 229, 0.06);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 768px) {
+    .search-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        gap: 10px;
+    }
+
+    .search-filters__search {
+        min-width: unset;
+    }
+    .search-filters__select {
+        min-width: unset;
+        width: 100%;
+    }
+    .search-filters__price {
+        width: 100%;
+    }
+    .search-filters__input_price {
+        flex: 1;
+        width: auto;
+    }
+    .search-filters__reset {
+        width: 100%;
+        text-align: center;
+    }
+}

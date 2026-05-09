@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
+import '../components/SearchFilters'
 import '../styles/Products.css';
 
 function Products() {
@@ -9,6 +10,7 @@ function Products() {
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
+    const [filters, setFilters] = useState({});
     const [favorites, setFavorites] = useState(() => {
         const saved = localStorage.getItem('favorites');
         return saved ? JSON.parse(saved) : [];
@@ -25,14 +27,14 @@ function Products() {
         setLoading(true);
         setError(null);
 
-        getProducts({ page, limit: LIMIT })
+        getProducts({ page, limit: LIMIT, filters })
             .then(({ data, pagination }) => {
                 setProducts(data);
                 setHasMore(pagination.count === LIMIT);
             })
             .catch(() => setError('No se pudieron cargar los productos.'))
             .finally(() => setLoading(false));
-    }, [page]);
+    }, [page, filters]);
 
     // ─── Carrito ───────────────────────────────────────────────
     const handleAddToCart = (product) => {
@@ -58,6 +60,11 @@ function Products() {
         });
     };
 
+    const handleFilterChange = (newFilters) => {
+        setFilters(newFilters);
+        setPage(1);
+    };
+
     const isFavorite = (id) => favorites.some((p) => p.id === id);
 
     // ─── Render ────────────────────────────────────────────────
@@ -78,6 +85,14 @@ function Products() {
         <main className="products-page">
             <div className="products-page__container">
                 <h1 className="products-page__title">Catálogo</h1>
+
+                <SearchFilters onFilterChange={handleFilterChange} />
+
+                {!loading && products.length === 0 && (
+                    <div className="products-page__empty">
+                        No se encontraron productos con esos filtros.
+                    </div>
+                )}
 
                 {/* Grilla */}
                 {loading ? (
@@ -101,7 +116,7 @@ function Products() {
                 )}
 
                 {/* Paginación */}
-                {!loading && (
+                {!loading && products.length > 0 && (
                     <div className="products-page__pagination">
                         <button
                             className="products-page__page-btn"
