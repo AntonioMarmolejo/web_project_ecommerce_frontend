@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
-import '../components/SearchFilters'
+import SearchFilters from '../components/SearchFilters';
 import '../styles/Products.css';
 
 function Products() {
