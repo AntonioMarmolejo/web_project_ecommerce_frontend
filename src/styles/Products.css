@@ -1,0 +1,150 @@
+/* ============================================
+   Products Page — TripleTen UI Kit
+============================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+
+.products-page {
+    min-height: 100vh;
+    background: #f5f5f5;
+    font-family: "Inter", sans-serif;
+}
+
+.products-page__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+}
+
+.products-page__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 32px;
+}
+
+/* --- Grilla responsive --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+/* --- Skeleton loader --- */
+.product-skeleton {
+    background: #ffffff;
+    border-radius: 8px;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* --- Error state --- */
+.products-page__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 80px 0;
+    font-size: 16px;
+    color: #888888;
+}
+
+.products-page__retry {
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 100px;
+    background: #2f71e5;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+.products-page__retry:hover {
+    background: #1a5fd4;
+}
+
+/* --- Paginación --- */
+.products-page__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 48px;
+}
+
+.products-page__page-btn {
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 100px;
+    background: transparent;
+    color: #2f71e5;
+    border: 1px solid #2f71e5;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.products-page__page-btn:hover:not(:disabled) {
+    background: rgba(47, 113, 229, 0.06);
+}
+
+.products-page__page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.products-page__page-num {
+    font-size: 14px;
+    color: #888888;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 1024px) {
+    .products-page__container {
+        padding: 32px 24px 60px;
+    }
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .products-page__container {
+        padding: 24px 16px 48px;
+    }
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .products-page__title {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 375px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}

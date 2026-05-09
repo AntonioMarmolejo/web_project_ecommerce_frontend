@@ -1,0 +1,141 @@
+/* ============================================
+   ProductCard — TripleTen UI Kit
+   Fondo card:  #FFFFFF
+   Fondo page:  #F5F5F5
+   Azul:        #2F71E5
+   Texto:       #000000
+   Gris:        #888888
+============================================ */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    transition:
+        box-shadow 0.2s,
+        transform 0.2s;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* --- Imagen --- */
+.product-card__image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.product-card:hover .product-card__image {
+    transform: scale(1.04);
+}
+
+/* --- Botón favorito --- */
+.product-card__fav {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    color: #888888;
+    transition:
+        color 0.2s,
+        transform 0.2s;
+}
+
+.product-card__fav:hover {
+    transform: scale(1.1);
+}
+
+.product-card__fav_active {
+    color: #2f71e5;
+}
+
+/* --- Body --- */
+.product-card__body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.product-card__category {
+    font-size: 12px;
+    color: #888888;
+    font-family: "Inter", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-card__title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    font-family: "Inter", sans-serif;
+    line-height: 1.4;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- Footer: precio + botón --- */
+.product-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.product-card__price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+    font-family: "Inter", sans-serif;
+}
+
+/* Botón píldora — UI Kit */
+.product-card__btn {
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 100px;
+    background: #2f71e5;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.product-card__btn:hover {
+    background: #1a5fd4;
+}
