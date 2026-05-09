@@ -1,0 +1,273 @@
+/* ============================================
+   Navbar — TripleTen UI Kit (correcto)
+   Fuente:     Inter
+   Fondo:      #FFFFFF
+   Página bg:  #F5F5F5
+   Azul:       #2F71E5
+   Texto:      #000000
+   Gris texto: #888888
+   Error:      #FF0000
+============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E8E8E8;
+  font-family: 'Inter', sans-serif;
+}
+
+.navbar__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* --- Logo --- */
+.navbar__logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* --- Nav links --- */
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.navbar__link {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  text-decoration: none;
+  padding: 6px 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+  margin-right: 24px;
+}
+
+.navbar__link:hover {
+  color: #2F71E5;
+}
+
+.navbar__link_active {
+  color: #000000;
+  border-bottom: 2px solid #000000;
+  font-weight: 500;
+}
+
+/* --- Acciones --- */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* --- Icono carrito --- */
+.navbar__icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #000000;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.navbar__icon-btn:hover {
+  background-color: #F5F5F5;
+}
+
+/* --- Badge --- */
+.navbar__badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  background-color: #2F71E5;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+/* --- Botones (píldora — según UI Kit) --- */
+.navbar__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 24px;
+  border-radius: 100px;       /* píldora — UI Kit */
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s, opacity 0.2s;
+  white-space: nowrap;
+}
+
+.navbar__btn_primary {
+  background-color: #2F71E5;
+  color: #FFFFFF;
+}
+
+.navbar__btn_primary:hover {
+  background-color: #1A5FD4;
+}
+
+.navbar__btn_ghost {
+  background-color: transparent;
+  color: #2F71E5;
+  border: 1px solid #2F71E5;
+}
+
+.navbar__btn_ghost:hover {
+  background-color: rgba(47, 113, 229, 0.06);
+}
+
+.navbar__btn_full {
+  width: 100%;
+}
+
+/* --- Usuario autenticado --- */
+.navbar__user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar__username {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.navbar__auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- Hamburger (mobile) --- */
+.navbar__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.navbar__hamburger:hover {
+  background-color: #F5F5F5;
+}
+
+/* --- Menú mobile --- */
+.navbar__mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E8E8E8;
+  padding: 0 24px 24px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.navbar__mobile-menu_open {
+  max-height: 400px;
+}
+
+.navbar__mobile-link {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  text-decoration: none;
+  padding: 16px 0;
+  border-bottom: 1px solid #E8E8E8;
+  transition: color 0.2s;
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link.active {
+  color: #2F71E5;
+}
+
+.navbar__mobile-auth {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.navbar__mobile-username {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  padding: 8px 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   1440 → Desktop
+   1024 → Escritorio reducido
+   768  → Tablet
+   375  → Móvil
+============================================ */
+
+@media (max-width: 1024px) {
+  .navbar__container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__container {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .navbar__nav   { display: none; }
+  .navbar__auth  { display: none; }
+  .navbar__user  { display: none; }
+
+  .navbar__hamburger     { display: flex; }
+  .navbar__mobile-menu   { display: flex; }
+}
+
+@media (max-width: 375px) {
+  .navbar__container {
+    padding: 0 16px;
+  }
+}
