@@ -1,0 +1,242 @@
+/* ============================================
+   Cart Page — TripleTen UI Kit
+============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+.cart-page {
+  min-height: 100vh;
+  background: #F5F5F5;
+  font-family: 'Inter', sans-serif;
+}
+
+.cart-page__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+.cart-page__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 32px;
+}
+
+/* --- Layout --- */
+.cart-page__layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* --- Items --- */
+.cart-page__items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.cart-item__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #F5F5F5;
+  flex-shrink: 0;
+}
+
+.cart-item__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item__price {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+/* --- Cantidad --- */
+.cart-item__qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cart-item__qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #D0D0D0;
+  background: #FFFFFF;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+
+.cart-item__qty-btn:hover {
+  border-color: #2F71E5;
+  color: #2F71E5;
+}
+
+.cart-item__qty-num {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  min-width: 20px;
+  text-align: center;
+}
+
+.cart-item__subtotal {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  min-width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.cart-item__remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.cart-item__remove:hover {
+  color: #FF0000;
+}
+
+.cart-page__clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #888;
+  text-decoration: underline;
+  padding: 4px 0;
+  font-family: 'Inter', sans-serif;
+  align-self: flex-start;
+}
+
+/* --- Resumen --- */
+.cart-page__summary {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 100px;
+}
+
+.cart-page__summary-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 4px;
+}
+
+.cart-page__summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #444;
+}
+
+.cart-page__summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  padding-top: 12px;
+  border-top: 1px solid #E8E8E8;
+}
+
+/* --- Botones --- */
+.cart-page__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.cart-page__btn_primary {
+  background: #2F71E5;
+  color: #FFFFFF;
+}
+
+.cart-page__btn_primary:hover {
+  background: #1A5FD4;
+}
+
+.cart-page__btn_ghost {
+  background: transparent;
+  color: #2F71E5;
+  border: 1px solid #2F71E5;
+}
+
+.cart-page__btn_ghost:hover {
+  background: rgba(47,113,229,0.06);
+}
+
+/* --- Empty --- */
+.cart-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 80px 0;
+  font-size: 16px;
+  color: #888;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .cart-page__container { padding: 24px 16px 48px; }
+  .cart-page__layout { grid-template-columns: 1fr; }
+  .cart-page__summary { position: static; }
+  .cart-item__subtotal { display: none; }
+}

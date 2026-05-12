@@ -1,0 +1,80 @@
+/* ============================================
+   Favorites Page — TripleTen UI Kit
+============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+.favorites-page {
+  min-height: 100vh;
+  background: #F5F5F5;
+  font-family: 'Inter', sans-serif;
+}
+
+.favorites-page__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+.favorites-page__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 32px;
+}
+
+.favorites-page__count {
+  font-size: 20px;
+  font-weight: 400;
+  color: #888;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.favorites-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 80px 0;
+  font-size: 16px;
+  color: #888;
+}
+
+.favorites-page__btn {
+  height: 48px;
+  padding: 0 32px;
+  border-radius: 100px;
+  background: #2F71E5;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.favorites-page__btn:hover {
+  background: #1A5FD4;
+}
+
+@media (max-width: 1024px) {
+  .favorites-page__container { padding: 32px 24px 60px; }
+  .favorites-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+
+@media (max-width: 768px) {
+  .favorites-page__container { padding: 24px 16px 48px; }
+  .favorites-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .favorites-page__title { font-size: 24px; }
+}
+
+@media (max-width: 375px) {
+  .favorites-grid { grid-template-columns: 1fr; }
+}
