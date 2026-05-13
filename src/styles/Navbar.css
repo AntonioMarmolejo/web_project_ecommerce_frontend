@@ -1,6 +1,4 @@
-/* ============================================   Navbar — TripleTen UI Kit (correcto)
-   Fuente:     Inter
-   Fondo:      #FFFFFF
+/* ============================================   Navbar — TripleTen UI Kit (correcto)   Fuente:     Inter   Fondo:      #FFFFFF
    Página bg:  #F5F5F5
    Azul:       #2F71E5
    Texto:      #000000
@@ -210,6 +208,8 @@
 
 .navbar__mobile-menu_open {
     max-height: 400px;
+    width: 74%;
+    padding-right: 50px;
 }
 
 .navbar__mobile-link {

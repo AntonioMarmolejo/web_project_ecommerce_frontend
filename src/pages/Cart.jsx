@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import './Cart.css';
+import '../styles/Cart.css';
 
 function Cart() {
     const { cart, removeFromCart, updateQty, clearCart, cartTotal } = useCart();

@@ -5,10 +5,6 @@ import '../styles/Navbar.css';
 function Navbar({ cartCount = 0, favCount = 0, isLoggedIn = false, userName = '', onLogout }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const onLogout = () => {
-        navigate('/');
-    };
-
     return (
         <header className="navbar">
             <div className="navbar__container">

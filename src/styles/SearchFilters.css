@@ -1,6 +1,4 @@
-/* ============================================
-   SearchFilters — TripleTen UI Kit
-   Inputs: borde redondeado, borde gris
+/* ============================================   SearchFilters — TripleTen UI Kit   Inputs: borde redondeado, borde gris
    Select: mismo estilo que input
    Botón reset: ghost píldora azul
 ============================================ */
@@ -34,7 +32,7 @@
 }
 
 .search-filters__input {
-    width: 100%;
+    width: 82%;
     height: 44px;
     padding: 0 40px 0 40px;
     border: 1px solid #d0d0d0;
@@ -168,7 +166,6 @@
     }
     .search-filters__input_price {
         flex: 1;
-        width: auto;
     }
     .search-filters__reset {
         width: 100%;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import ProductCard from '../components/ProductCard';
-import './Favorites.css';
+import '../styles/Favorites.css';
 
 function Favorites() {
     const { favorites, toggleFavorite, addToCart, isFavorite } = useCart();
