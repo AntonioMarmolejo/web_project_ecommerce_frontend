@@ -1,8 +1,4 @@
-/* ============================================
-   ProductDetail — TripleTen UI Kit
-============================================ */
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+/* ============================================   ProductDetail — TripleTen UI Kit============================================ */@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 
 .detail-page {
     min-height: 100vh;
@@ -276,6 +272,7 @@
     height: 36px;
     width: 80%;
 }
+
 .detail-skeleton__line_short {
     width: 40%;
 }
@@ -284,6 +281,7 @@
     0% {
         background-position: 200% 0;
     }
+
     100% {
         background-position: -200% 0;
     }
@@ -307,10 +305,12 @@
     .detail-page__container {
         padding: 24px 24px 60px;
     }
+
     .detail-page__layout {
         gap: 40px;
         padding: 32px;
     }
+
     .detail-page__related-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -320,20 +320,25 @@
     .detail-page__container {
         padding: 20px 16px 48px;
     }
+
     .detail-page__layout {
         grid-template-columns: 1fr;
         gap: 24px;
         padding: 24px 16px;
     }
+
     .detail-skeleton {
         grid-template-columns: 1fr;
     }
+
     .detail-page__title {
         font-size: 22px;
     }
+
     .detail-page__price {
         font-size: 26px;
     }
+
     .detail-page__related-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
@@ -343,5 +348,35 @@
 @media (max-width: 375px) {
     .detail-page__related-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .detail-page__layout {
+        padding: 16px;
+    }
+
+    .detail-page__title {
+        font-size: 20px;
+    }
+
+    .detail-page__price {
+        font-size: 22px;
+    }
+
+    .detail-page__actions {
+        flex-direction: column;
+    }
+
+    .detail-page__btn_primary {
+        width: 100%;
+    }
+
+    .detail-page__btn_fav {
+        width: 100%;
+    }
+
+    .detail-page__thumbs {
+        justify-content: center;
     }
 }

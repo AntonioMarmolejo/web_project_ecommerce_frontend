@@ -248,3 +248,27 @@
         display: none;
     }
 }
+
+@media (max-width: 480px) {
+    .cart-item {
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .cart-item__img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .cart-item__title {
+        font-size: 13px;
+    }
+
+    .cart-page__summary {
+        padding: 16px;
+    }
+
+    .cart-page__title {
+        font-size: 24px;
+    }
+}
