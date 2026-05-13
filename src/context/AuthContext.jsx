@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import api from '../services/api';
+import { useToast } from './ToastContext';
 
 const AuthContext = createContext();
 
@@ -7,13 +8,12 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(() => localStorage.getItem('token'));
     const [loading, setLoading] = useState(true);
+    const { showToast } = useToast();
 
     // Cargar perfil si hay token al montar
     useEffect(() => {
         if (token) {
-            api.get('/auth/profile', {
-                headers: { Authorization: `Bearer ${token}` },
-            })
+            api.get('/auth/profile')
                 .then((r) => setUser(r.data))
                 .catch(() => {
                     localStorage.removeItem('token');
@@ -33,10 +33,9 @@ export function AuthProvider({ children }) {
         setToken(access_token);
 
         // Obtener perfil
-        const profile = await api.get('/auth/profile', {
-            headers: { Authorization: `Bearer ${access_token}` },
-        });
+        const profile = await api.get('/auth/profile');
         setUser(profile.data);
+        showToast('Sesión iniciada correctamente', 'info');
         return profile.data;
     };
 
@@ -51,6 +50,7 @@ export function AuthProvider({ children }) {
         localStorage.removeItem('token');
         setToken(null);
         setUser(null);
+        showToast('Sesión cerrada', 'info');
     };
 
     return (

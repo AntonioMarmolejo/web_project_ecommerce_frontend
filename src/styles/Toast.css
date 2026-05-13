@@ -1,0 +1,78 @@
+/* ============================================
+   Toast Notifications — TripleTen UI Kit
+   Verde éxito:  #1D9E75
+   Rojo error:   #FF0000
+   Azul info:    #2F71E5
+============================================ */
+
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 100px;        /* píldora — UI Kit */
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  cursor: pointer;
+  pointer-events: all;
+  min-width: 200px;
+  max-width: 320px;
+
+  /* Animación entrada */
+  animation: toast-in 0.3s ease forwards;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Variantes --- */
+.toast_success { background: #1D9E75; }
+.toast_error   { background: #D85A30; }
+.toast_info    { background: #2F71E5; }
+
+.toast__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.toast__message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .toast-container {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+  }
+
+  .toast {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+}

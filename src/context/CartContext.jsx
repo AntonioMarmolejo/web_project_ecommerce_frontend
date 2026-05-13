@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import { useToast } from './ToastContext';
 
 const CartContext = createContext();
 
@@ -13,6 +14,7 @@ export function CartProvider({ children }) {
         catch { return []; }
     });
 
+    const { showToast } = useToast();
     // ─── Carrito ───────────────────────────────────────────────
     const addToCart = (product) => {
         setCart((prev) => {
@@ -23,6 +25,7 @@ export function CartProvider({ children }) {
             localStorage.setItem('cart', JSON.stringify(updated));
             return updated;
         });
+        showToast('Producto añadido al carrito');
     };
 
     const removeFromCart = (id) => {
@@ -52,14 +55,18 @@ export function CartProvider({ children }) {
 
     // ─── Favoritos ─────────────────────────────────────────────
     const toggleFavorite = (product) => {
+        const exists = favorites.find((p) => p.id === product.id);
         setFavorites((prev) => {
-            const exists = prev.find((p) => p.id === product.id);
             const updated = exists
                 ? prev.filter((p) => p.id !== product.id)
                 : [...prev, product];
             localStorage.setItem('favorites', JSON.stringify(updated));
             return updated;
         });
+        showToast(
+            exists ? 'Eliminado de favoritos' : 'Añadido a favoritos',
+            exists ? 'error' : 'success'
+        );
     };
 
     const isFavorite = (id) => favorites.some((p) => p.id === id);
