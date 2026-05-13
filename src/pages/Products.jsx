@@ -27,7 +27,7 @@ function Products() {
         setLoading(true);
         setError(null);
 
-        getProducts({ page, limit: LIMIT, filters })
+        getProducts({ page, limit: LIMIT, ...filters })
             .then(({ data, pagination }) => {
                 setProducts(data);
                 setHasMore(pagination.count === LIMIT);
