@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-function Navbar({ cartCount = 0, favCount = 0, isLoggedIn = false, userName = '' }) {
+function Navbar({ cartCount = 0, favCount = 0, isLoggedIn = false, userName = '', onLogout }) {
     const [menuOpen, setMenuOpen] = useState(false);
-    const navigate = useNavigate();
 
-    const handleLogout = () => {
+    const onLogout = () => {
         navigate('/');
     };
 
@@ -42,7 +41,7 @@ function Navbar({ cartCount = 0, favCount = 0, isLoggedIn = false, userName = ''
                                 </svg>
                                 {userName}
                             </span>
-                            <button className="navbar__btn navbar__btn_ghost" onClick={handleLogout}>Cerrar sesión</button>
+                            <button className="navbar__btn navbar__btn_ghost" onClick={onLogout}>Cerrar sesión</button>
                         </div>
                     ) : (
                         <div className="navbar__auth">
@@ -71,7 +70,7 @@ function Navbar({ cartCount = 0, favCount = 0, isLoggedIn = false, userName = ''
                     {isLoggedIn ? (
                         <>
                             <span className="navbar__mobile-username">{userName}</span>
-                            <button className="navbar__btn navbar__btn_ghost navbar__btn_full" onClick={() => { handleLogout(); setMenuOpen(false); }}>Cerrar sesión</button>
+                            <button className="navbar__btn navbar__btn_ghost navbar__btn_full" onClick={() => { onLogout(); setMenuOpen(false); }}>Cerrar sesión</button>
                         </>
                     ) : (
                         <>
