@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProductById, getRelatedProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
+import { useCart } from '../context/CartContext';
 import '../styles/ProductDetail.css';
 
 function ProductDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { addToCart, toggleFavorite, isFavorite } = useCart();
 
     const [product, setProduct] = useState(null);
     const [related, setRelated] = useState([]);
@@ -14,15 +16,6 @@ function ProductDetail() {
     const [error, setError] = useState(null);
     const [imgIndex, setImgIndex] = useState(0);
     const [added, setAdded] = useState(false);
-
-    const [favorites, setFavorites] = useState(() => {
-        const saved = localStorage.getItem('favorites');
-        return saved ? JSON.parse(saved) : [];
-    });
-    const [cart, setCart] = useState(() => {
-        const saved = localStorage.getItem('cart');
-        return saved ? JSON.parse(saved) : [];
-    });
 
     // ─── Cargar producto ───────────────────────────────────────
     useEffect(() => {
@@ -41,33 +34,11 @@ function ProductDetail() {
     }, [id]);
 
     // ─── Carrito ───────────────────────────────────────────────
-    const handleAddToCart = (prod = product) => {
-        setCart((prev) => {
-            const exists = prev.find((p) => p.id === prod.id);
-            const updated = exists
-                ? prev.map((p) => p.id === prod.id ? { ...p, qty: p.qty + 1 } : p)
-                : [...prev, { ...prod, qty: 1 }];
-            localStorage.setItem('cart', JSON.stringify(updated));
-            return updated;
-        });
-        // Feedback visual por 1.5s
+    const handleAddToCart = (prod) => {
+        addToCart(prod || product);
         setAdded(true);
         setTimeout(() => setAdded(false), 1500);
     };
-
-    // ─── Favoritos ─────────────────────────────────────────────
-    const handleToggleFavorite = (prod = product) => {
-        setFavorites((prev) => {
-            const exists = prev.find((p) => p.id === prod.id);
-            const updated = exists
-                ? prev.filter((p) => p.id !== prod.id)
-                : [...prev, prod];
-            localStorage.setItem('favorites', JSON.stringify(updated));
-            return updated;
-        });
-    };
-
-    const isFavorite = (pid) => favorites.some((p) => p.id === pid);
 
     // ─── Limpiar imagen de Platzi API ──────────────────────────
     const cleanImage = (url) =>
@@ -166,7 +137,7 @@ function ProductDetail() {
                             </button>
                             <button
                                 className={`detail-page__btn detail-page__btn_fav ${isFavorite(product.id) ? 'detail-page__btn_fav_active' : ''}`}
-                                onClick={() => handleToggleFavorite()}
+                                onClick={() => toggleFavorite(product)}
                                 aria-label="Favoritos"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill={isFavorite(product.id) ? '#2F71E5' : 'none'} stroke={isFavorite(product.id) ? '#2F71E5' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -186,8 +157,8 @@ function ProductDetail() {
                                 <ProductCard
                                     key={p.id}
                                     product={p}
-                                    onAddToCart={handleAddToCart}
-                                    onToggleFavorite={handleToggleFavorite}
+                                    onAddToCart={addToCart}
+                                    onToggleFavorite={toggleFavorite}
                                     isFavorite={isFavorite(p.id)}
                                 />
                             ))}

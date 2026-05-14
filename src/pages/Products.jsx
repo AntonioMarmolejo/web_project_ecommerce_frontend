@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import SearchFilters from '../components/SearchFilters';
+import { useCart } from '../context/CartContext';
 import '../styles/Products.css';
 
 function Products() {
@@ -11,14 +12,8 @@ function Products() {
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
     const [filters, setFilters] = useState({});
-    const [favorites, setFavorites] = useState(() => {
-        const saved = localStorage.getItem('favorites');
-        return saved ? JSON.parse(saved) : [];
-    });
-    const [cart, setCart] = useState(() => {
-        const saved = localStorage.getItem('cart');
-        return saved ? JSON.parse(saved) : [];
-    });
+
+    const { addToCart, toggleFavorite, isFavorite } = useCart();
 
     const LIMIT = 12;
 
@@ -36,36 +31,10 @@ function Products() {
             .finally(() => setLoading(false));
     }, [page, filters]);
 
-    // ─── Carrito ───────────────────────────────────────────────
-    const handleAddToCart = (product) => {
-        setCart((prev) => {
-            const exists = prev.find((p) => p.id === product.id);
-            const updated = exists
-                ? prev.map((p) => p.id === product.id ? { ...p, qty: p.qty + 1 } : p)
-                : [...prev, { ...product, qty: 1 }];
-            localStorage.setItem('cart', JSON.stringify(updated));
-            return updated;
-        });
-    };
-
-    // ─── Favoritos ─────────────────────────────────────────────
-    const handleToggleFavorite = (product) => {
-        setFavorites((prev) => {
-            const exists = prev.find((p) => p.id === product.id);
-            const updated = exists
-                ? prev.filter((p) => p.id !== product.id)
-                : [...prev, product];
-            localStorage.setItem('favorites', JSON.stringify(updated));
-            return updated;
-        });
-    };
-
     const handleFilterChange = (newFilters) => {
         setFilters(newFilters);
         setPage(1);
     };
-
-    const isFavorite = (id) => favorites.some((p) => p.id === id);
 
     // ─── Render ────────────────────────────────────────────────
     if (error) {
@@ -107,8 +76,8 @@ function Products() {
                             <ProductCard
                                 key={product.id}
                                 product={product}
-                                onAddToCart={handleAddToCart}
-                                onToggleFavorite={handleToggleFavorite}
+                                onAddToCart={addToCart}
+                                onToggleFavorite={toggleFavorite}
                                 isFavorite={isFavorite(product.id)}
                             />
                         ))}

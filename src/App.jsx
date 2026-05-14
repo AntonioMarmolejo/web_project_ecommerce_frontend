@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { CartProvider, useCart } from './context/CartContext';
 import { ToastProvider } from './context/ToastContext';
@@ -12,6 +13,13 @@ import Favorites from './pages/Favorites';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
+
+// ─── Scroll al tope en cada navegación ────────────────────
+function ScrollToTop() {
+    const { pathname } = useLocation();
+    useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+    return null;
+}
 
 // ─── Ruta protegida ────────────────────────────────────────
 function PrivateRoute({ children }) {
@@ -59,6 +67,7 @@ function App() {
             <ToastProvider>
                 <AuthProvider>
                     <CartProvider>
+                        <ScrollToTop />
                         <AppLayout />
                     </CartProvider>
                 </AuthProvider>

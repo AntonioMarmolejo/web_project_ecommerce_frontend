@@ -47,7 +47,7 @@ export function ToastProvider({ children }) {
                                 </svg>
                             )}
                         </span>
-                        <span className="toast__message">{message}</span>
+                        <span className="toast__message">{toast.message}</span>
                     </div>
                 ))}
             </div>
