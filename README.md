@@ -3,7 +3,7 @@ Proyecto final del programa de desarrollo web de TripleTen. Aplicación full sta
 
 ## 🔗 Demo
 
-- **Frontend**: _([agregar link](https://ecommerceproyectofinal.duckdns.org) )_
+- **Frontend**: _([Ir a la Página en Linea](https://ecommerceproyectofinal.duckdns.org) )_
 
 ---
 
@@ -226,10 +226,21 @@ La app estará disponible en `http://localhost:5173`
 ## 📸 Capturas de pantalla
 
 _(Agregar capturas del catálogo, detalle de producto y carrito al completar el proyecto)_
+![home](./src/assets/image.png)
+![home-categoria](./src/assets/Captura%20de%20pantalla%202026-05-14%20001653.png)
+![home-categoria](./src/assets/Captura%20de%20pantalla%202026-05-14%20001742.png)
+![filter-buttom](./src/assets/Captura%20de%20pantalla%202026-05-14%20001843.png)
+![login](./src/assets/login.png)
+![logout](./src/assets/logout.png)
+![popup-detail](./src/assets/deatailpopup.png)
+![favorite](./src/assets/favorite.png)
+![cart](./src/assets/cart.png)
 
----
+## GIF de interacción
 
-## 👩‍💻 Autora
+## ![Ver video](./src/assets/Ejemplo%20de%20interaccion%20de%20proyecto%20final.gif)
+
+## 👩‍💻 Autorñ
 
 Desarrollado por **Antonio Marmolejo Garcez** como proyecto final del programa de desarrollo web full stack de TripleTen.
 
